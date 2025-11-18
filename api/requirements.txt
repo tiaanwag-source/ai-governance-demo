@@ -1,0 +1,6 @@
+fastapi
+uvicorn[standard]
+pydantic
+SQLAlchemy>=2
+psycopg2-binary
+python-dateutil

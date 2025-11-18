@@ -1,0 +1,39 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: ai_gov
+      POSTGRES_PASSWORD: ai_gov
+      POSTGRES_DB: registry
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ai_gov -d registry"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  api:
+    build:
+      context: ../api
+      dockerfile: Dockerfile
+    environment:
+      DATABASE_URL: postgresql+psycopg2://ai_gov:ai_gov@db:5432/registry
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8000:8000"
+    command: ["uvicorn","app.main:app","--host","0.0.0.0","--port","8000"]
+
+  adapter_loader:
+    build:
+      context: adapter
+      dockerfile: Dockerfile
+    depends_on:
+      - api
+    volumes:
+      - ../data:/data:ro
+    command: ["/data/vertex_big.jsonl", "/data/copilot_big.jsonl"]

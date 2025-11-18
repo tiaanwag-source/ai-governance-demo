@@ -1,0 +1,23 @@
+[
+  {
+    "selector_type": "project",
+    "selector_value": "acme-ml-trusted",
+    "data_class": "internal",
+    "default_output_scope": ["internal_only"],
+    "required_dlp_template": "dlp_tpl_finance_v2"
+  },
+  {
+    "selector_type": "project",
+    "selector_value": "acme-ml-sandbox",
+    "data_class": "internal",
+    "default_output_scope": ["internal_only"],
+    "required_dlp_template": null
+  },
+  {
+    "selector_type": "project",
+    "selector_value": "m365",
+    "data_class": "internal",
+    "default_output_scope": ["internal_only"],
+    "required_dlp_template": null
+  }
+]

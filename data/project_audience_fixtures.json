@@ -1,0 +1,6 @@
+[
+  { "project_id": "acme-ml-dev", "reach_count": 25000 },
+  { "project_id": "acme-ml-trusted", "reach_count": 4000 },
+  { "project_id": "acme-ml-sandbox", "reach_count": 120 },
+  { "project_id": "m365", "reach_count": 50000 }
+]
