@@ -11,7 +11,7 @@
     danger?: boolean;
   };
 
-  const API_BASE = "http://localhost:8000";
+  const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:8000";
   const DEFAULT_AGENT =
     "projects/acme-ml-dev/locations/us-central1/agents/019c163c";
 
