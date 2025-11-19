@@ -174,7 +174,7 @@ export type SdkCheckResponse = {
   approval_status?: string;
 };
 
-const API_BASE = "http://localhost:8000";  // hard-wire to FastAPI
+const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:8000";  // configurable API target
 const JSON_HEADERS = { "Content-Type": "application/json" };
 
 async function handle(resp: Response) {
